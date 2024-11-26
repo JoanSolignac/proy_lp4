@@ -149,7 +149,7 @@
   <!-- Content Wrapper -->
   <div class="content-wrapper">
     <div class="content">
-      <h1>Página Principal</h1>
+      @yield('content')
     </div>
   </div>
 
