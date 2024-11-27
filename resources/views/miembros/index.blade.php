@@ -2,6 +2,6 @@
 
 @section("content")
     <h1>
-        Mostrar Miembros
+        Listado de Miembros
     </h1>
 @endsection
