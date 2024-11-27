@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Control de Asistencia</title>
+  <title>Control de Asistencia Supermercado</title>
   
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -28,7 +28,9 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/home') }}" class="nav-link">CONTROL DE ASISTENCIA</a>
+        <a href="{{ url('/home') }}" class="nav-link">
+          CONTROL DE ASISTENCIA SUPERMERCADO &nbsp;<i class="bi bi-cart"></i>
+        </a>
       </li>
     </ul>
 
@@ -122,21 +124,21 @@
                 <i class="nav-icon bi bi-person-square"></i>
               </i>
               <p>
-                Miembros
+                Empleados
                 <i class="right fas fa-angle-left" ></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item fan">
-                <a href="{{ url('miembros/create') }}" class="nav-link active">
+                <a href="{{ url('empleados/create') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Nuevo Miembro</p>
+                  <p>Nuevo Empleado</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('miembros') }}" class="nav-link active">
+                <a href="{{ url('empleados') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Mostrar Miembros</p>
+                  <p>Mostrar Empleados</p>
                 </a>
               </li>
             </ul>

@@ -2,6 +2,6 @@
 
 @section("content")
     <h1>
-        Listado de Miembros
+        Mostar Empleados
     </h1>
 @endsection

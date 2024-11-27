@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Route;
 //     return view("dashboard");
 // })->middleware(["auth", "verified"])->name("dashboard");
 
-Route::get("miembros", function () {
-    return view("miembros.index");
+Route::get("empleados", function () {
+    return view("empleados.index");
 })->middleware(["auth", "verified"]);
 
-Route::get("miembros/create", function(){
-    return view("miembros.create");
+Route::get("empleados/create", function(){
+    return view("empleados.create");
 })->middleware(["auth", "verified"]);
 
 

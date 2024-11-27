@@ -2,6 +2,6 @@
 
 @section("content")
     <h1>
-        Agregar Miembro
+        Crear Empleado
     </h1>
 @endsection
