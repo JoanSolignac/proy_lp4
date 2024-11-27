@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EmpleadoController;
 use Illuminate\Support\Facades\Route;
 
 /*Mis Rutas */
@@ -10,13 +11,12 @@ use Illuminate\Support\Facades\Route;
 //     return view("dashboard");
 // })->middleware(["auth", "verified"])->name("dashboard");
 
-Route::get("empleados", function () {
-    return view("empleados.index");
-})->middleware(["auth", "verified"]);
 
-Route::get("empleados/create", function(){
-    return view("empleados.create");
-})->middleware(["auth", "verified"]);
+
+Route::middleware('auth')->group(function(){
+    Route::get("empleados", [EmpleadoController::class, "index"])->name("empleados.index");
+    Route::get('empleados/create', [EmpleadoController::class, 'create'])->name('empleados.create');
+});
 
 
 

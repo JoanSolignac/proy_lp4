@@ -13,9 +13,13 @@
   
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+
+  <!-- Estilos Boostrap -->
+  <link rel="stylesheet" href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css') }}">
   
   <!-- Iconos de Bootstrap -->
   <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css') }}">
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -130,6 +134,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item fan">
+                <a href="{{ url('home') }}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Página Principal</p>
+                </a>
+              </li>
+              <li class="nav-item fan">
                 <a href="{{ url('empleados/create') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Nuevo Empleado</p>
@@ -151,14 +161,14 @@
   <!-- Content Wrapper -->
   <div class="content-wrapper">
     <div class="content">
-      @yield('content')
+      @yield('content') <!-- Aquí se inserta el contenido de cada vista -->
     </div>
   </div>
 
   <!-- Footer -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-inline">Anything you want</div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">Supermercado Emanuelito</a>.</strong> All rights reserved.
   </footer>
 </div>
 
