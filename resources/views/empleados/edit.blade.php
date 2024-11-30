@@ -6,11 +6,12 @@
             <div class="col-md-8">
                 <div class="card shadow-sm">
                     <div class="card-header bg-primary text-white">
-                        <h4 class="mb-0">Crear Empleado</h4>
+                        <h4 class="mb-0">Modificar Empleado</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('empleados.store') }}" method="POST">
+                        <form action="{{ route('empleados.update', $empleado) }}" method="POST">
                             @csrf
+                            @method('PUT')
 
                             {{-- Mensajes de error --}}
                             @if ($errors->any())
@@ -26,44 +27,37 @@
                             {{-- Campo: Nombre y Apellido --}}
                             <div class="mb-3">
                                 <label for="nombre_apellido" class="form-label">Nombre y Apellido</label>
-                                <input type="text" class="form-control rounded-pill" name="nombre_apellido" value="{{ old('nombre_apellido') }}" required>
+                                <input type="text" class="form-control rounded-pill" name="nombre_apellido" value="{{ $empleado->nombre_apellido }}" required>
                             </div>
-
-                            <!-- Campo: Fecha de Nacimiento -->
-                            <div class="mb-3">
-                                <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
-                                <input type="date" class="form-control rounded-pill" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" required>
-                            </div>
-
 
                             {{-- Campo: DNI --}}
                             <div class="mb-3">
                                 <label for="dni" class="form-label">DNI</label>
-                                <input type="text" class="form-control rounded-pill" name="dni" value="{{ old('dni') }}" required>
+                                <input type="text" class="form-control rounded-pill" name="dni" value="{{ $empleado->dni }}" required>
                             </div>
 
                             {{-- Campo: Email --}}
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control rounded-pill" name="email" value="{{ old('email') }}" required>
+                                <input type="email" class="form-control rounded-pill" name="email" value="{{ $empleado->email }}" required>
                             </div>
 
                             {{-- Campo: Teléfono --}}
                             <div class="mb-3">
                                 <label for="telefono" class="form-label">Teléfono</label>
-                                <input type="text" class="form-control rounded-pill" name="telefono" value="{{ old('telefono') }}">
+                                <input type="text" class="form-control rounded-pill" name="telefono" value="{{ $empleado->telefono }}">
                             </div>
 
                             {{-- Campo: Dirección --}}
                             <div class="mb-3">
                                 <label for="direccion" class="form-label">Dirección</label>
-                                <input type="text" class="form-control rounded-pill" name="direccion" value="{{ old('direccion') }}">
+                                <input type="text" class="form-control rounded-pill" name="direccion" value="{{ $empleado->direccion }}">
                             </div>
 
                             {{-- Campo: Rol --}}
                             <div class="mb-3">
-                                <label for="rol" class="form-label">Rol</label>
-                                <select class="form-select rounded-pill w-100" name="rol" required>
+                                <label for="rol" class="form-label W-100">Rol</label>
+                                <select class="form-select rounded-pill" name="rol" required>
                                     @php
                                         $roles = [
                                             "Seguridad", "Recepcionista", "Supervisor", "Cocinera", 
@@ -72,7 +66,7 @@
                                         ];
                                     @endphp
                                     @foreach ($roles as $role)
-                                        <option value="{{ $role }}" {{ old('rol') == $role ? 'selected' : '' }}>{{ $role }}</option>
+                                        <option value="{{ $role }}" {{ $empleado->rol == $role ? 'selected' : '' }}>{{ $role }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -80,29 +74,28 @@
                             {{-- Campo: Estado --}}
                             <div class="mb-3">
                                 <label for="estado" class="form-label">Estado</label>
-                                <select class="form-select rounded-pill w-100" name="estado" required>
-                                    <option value="activo" {{ old('estado') == 'activo' ? 'selected' : '' }}>Activo</option>
-                                    <option value="inactivo" {{ old('estado') == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
+                                <select class="form-select rounded-pill W-100" name="estado" required>
+                                    <option value="activo" {{ $empleado->estado == 'activo' ? 'selected' : '' }}>Activo</option>
+                                    <option value="inactivo" {{ $empleado->estado == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
                                 </select>
                             </div>
 
-                            <!-- Campo: Hora de Entrada -->
+                            {{-- Campo: Hora de Entrada --}}
                             <div class="mb-3">
                                 <label for="hora_entrada" class="form-label">Hora de Entrada</label>
-                                <input type="time" class="form-control rounded-pill" name="hora_entrada" value="{{ old('hora_entrada') }}" required>
+                                <input type="time" class="form-control rounded-pill" name="hora_entrada" value="{{ $empleado->hora_entrada }}" required>
                             </div>
 
-                            <!-- Campo: Hora de Salida -->
+                            {{-- Campo: Hora de Salida --}}
                             <div class="mb-3">
                                 <label for="hora_salida" class="form-label">Hora de Salida</label>
-                                <input type="time" class="form-control rounded-pill" name="hora_salida" value="{{ old('hora_salida') }}" required>
+                                <input type="time" class="form-control rounded-pill" name="hora_salida" value="{{ $empleado->hora_salida }}" required>
                             </div>
-
 
                             {{-- Botones --}}
                             <div class="d-flex justify-content-end gap-3">
-                                <a href="{{ route('empleados.store') }}" class="btn btn-secondary mx-3">Cancelar</a>
-                                <button type="submit" class="btn btn-primary">Guardar Empleado</button>
+                                <a href="{{ route('empleados.index') }}" class="btn btn-secondary mx-3">Cancelar</a>
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                             </div>
                         </form>
                     </div>

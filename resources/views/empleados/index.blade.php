@@ -3,27 +3,30 @@
 @section("content")
 
     <div class="container mt-4" style="max-width: 100%;">
-        <h2 class="mb-4" style="font-size: 1.5rem;">Lista de Empleados</h2>
+        <h2 class="mb-4 text-center" style="font-size: 2.5rem;">Lista de Empleados</h2>
 
         <!-- Formulario de búsqueda -->
-        <form method="GET" action="{{ route('empleados.index') }}" class="mb-4">
-            <div class="row">
-                <div class="col-md-8">
-                    <input 
-                        type="text" 
-                        name="search" 
-                        class="form-control" 
-                        placeholder="Buscar empleado por nombre o DNI" 
-                        value="{{ request('search') }}" 
-                    />
+        <div class="container-fluid d-flex justify-content-center align-items-center mb-4">
+            <form method="GET" action="{{ route('empleados.index') }}" class="w-50">
+                <div class="row">
+                    <div class="col-12 col-md-8 mb-3 mb-md-0">
+                        <input 
+                            type="text" 
+                            name="search" 
+                            class="form-control w-100" 
+                            placeholder="Buscar empleado por nombre o DNI" 
+                            value="{{ request('search') }}" 
+                        />
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fa fa-search"></i> Buscar
+                        </button>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-search"></i> Buscar
-                    </button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
+
 
 
         <!--Tabla de Empleados-->
@@ -58,19 +61,26 @@
                     <td>{{ $empleado->hora_salida }}</td>
                     <td>
                         <!-- Botón Mostrar -->
-                        <button class="btn btn-sm btn-primary" title="Mostrar">
-                            <i class="fa fa-eye"></i> <!-- Icono de "Mostrar" -->
-                        </button>
+                        <!-- Botón Mostrar -->
+                        <a href="{{ route('empleados.show', $empleado) }}" class="btn btn-sm btn-primary" title="Mostrar">
+                            <i class="fa fa-eye"></i>
+                        </a>
 
-                        <!-- Botón Editar -->
-                        <button class="btn btn-sm btn-warning" title="Editar">
+                        <!-- Botón para Editar -->
+                        <a href="{{ route('empleados.edit', $empleado) }}" class="btn btn-sm btn-warning" title="Editar">
                             <i class="fa fa-edit"></i> <!-- Icono de "Editar" -->
-                        </button>
+                        </a>
 
-                        <!-- Botón Eliminar -->
-                        <button class="btn btn-sm btn-danger" title="Eliminar" onclick="alert('Acción Eliminar no implementada')">
-                            <i class="fa fa-trash"></i> <!-- Icono de "Eliminar" -->
-                        </button>
+                        <!-- Botón Eliminar con Formulario -->
+                        <form action="{{ route('empleados.destroy', $empleado) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?')">
+                                <i class="fa fa-trash"></i> <!-- Icono de "Eliminar" -->
+                            </button>
+                        </form>
+
+                        
                     </td>
                 </tr>
                 @endforeach
