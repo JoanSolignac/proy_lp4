@@ -20,8 +20,15 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call(
+        $this->call([
             EmpleadoSeeder::class,
-        );
+        ]);
+
+        // Crea usuarios directamente usando el factory
+        User::factory()->create([
+            'name' => 'Admin User',
+            'email' => 'adminsm@gmail.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('1234567890'), // Asegúrate de encriptar la contraseña
+        ]);
     }
 }
